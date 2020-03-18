@@ -1,10 +1,28 @@
 <?php
 global $wp_query;
+global $wp_customize;
+
+$spiny_sidebar = get_theme_mod('spiny_sidebar');
+
 ?>
 
 <div class="container">
 
     <div class="row">
+        <?php
+        if ( isset( $wp_customize ) ) {
+            /**
+             * Left sidebar in customizer
+             */
+            get_sidebar( 'customizer-left');
+        }
+        else {
+            if( (int)$spiny_sidebar === 2 ) {
+                get_sidebar();
+            }
+        }
+        ?>
+
         <div class="column">
             <?php
             if( is_archive() ) {
@@ -68,7 +86,7 @@ global $wp_query;
                 ?>
                 <div class="row">
                     <div class="column">
-                        <h1><?php printf( __( 'Результаты поиска по&nbsp;запросу&nbsp;&mdash; "%s"', 'spiny' ), get_search_query() ); ?></h1>
+                        <h1><?php printf( esc_html__( 'Search Results for: %s', 'spiny' ), '<span>' . get_search_query() . '</span>' );; ?></h1>
 
                         <?php
                         get_search_form();
@@ -124,7 +142,7 @@ global $wp_query;
                 ?>
                 <div class="row">
                     <div class="column">
-                        <?php echo __( 'No entries here', 'spiny' ); ?>
+                        <?php esc_html_e( 'Nothing Found', 'spiny' ); ?>
                     </div>
                 </div>
                 <?php
@@ -134,7 +152,17 @@ global $wp_query;
         </div>
 
         <?php
-        get_sidebar();
+        if ( isset( $wp_customize ) ) {
+            /**
+             * Right sidebar in customizer
+             */
+            get_sidebar( 'customizer-right');
+        }
+        else {
+            if( (int)$spiny_sidebar === 1 ) {
+                get_sidebar();
+            }
+        }
         ?>
     </div>
 

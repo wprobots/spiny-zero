@@ -4,8 +4,8 @@ Theme URI: https://spiny.io/
 Author: spiny
 Author URI: https://spiny.io/
 Description: Fastest free wordpress theme in the world
-Version: 1.0.0
-License: Apache-2
+Version: 0.1.0
+License: GPLv3
 License URI: LICENSE
 Text Domain: spiny
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, free theme
@@ -24,6 +24,10 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+html,
+body {
+    height: 100%;
+}
 
 a,
 a:visited,
@@ -271,16 +275,20 @@ footer .social {
     cursor: pointer;
 }
 .spiny_main_nav_mobile_close {
-    display: inline-block;
+    display: none;
     overflow: hidden;
     text-indent: -10000px;
     vertical-align: top;
     width: 34px;
     height: 34px;
-    background: url('assets/i/close-black.svg') 50% 50% no-repeat;
+    background: url('assets/i/close.svg') 50% 50% no-repeat;
     -webkit-background-size: cover;
     background-size: cover;
     cursor: pointer;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 10002;
 }
 
 @media screen and (max-width: 1100px) {
@@ -312,6 +320,9 @@ footer .social {
         overflow: auto;
     }
     nav.open .spiny_main_nav_list {
+        display: block;
+    }
+    nav.open .spiny_main_nav_mobile_close {
         display: block;
     }
     .spiny_main_nav_list .sub-menu li,
@@ -351,10 +362,28 @@ footer .social {
 /* SITE FOOTER NAVIGATION */
 
 
+/* milligram customize */
 .page_container .row .column {
     flex-grow: 1;
     width: 1px;
 }
+select {
+    background: url('assets/i/select.svg') center right no-repeat;
+}
+select:focus {
+    background-image: url('assets/i/select-focus.svg')
+}
+@media screen and (max-width: 860px) {
+    .page_container .row {
+        flex-wrap: wrap;
+    }
+    .page_container .row .column {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+/* milligram customize */
 
 
 
@@ -362,25 +391,16 @@ footer .social {
 
 /* TYPOGRAFY */
 
-
-/* FLOATS */
-.clear {
-    clear: both;
-}
-.float_left {
-    float: left;
-}
-.float_right {
-    float: right;
-}
-.float_none {
-    float: none;
-}
-/* FLOATS */
 
 /* BASIC */
 .overflow_hidden{
     overflow: hidden;
+}
+article .fb_iframe_widget,
+article .fb_iframe_widget > span,
+article iframe {
+    max-width: 100%;
+    width: 100% !important;
 }
 /* BASIC */
 

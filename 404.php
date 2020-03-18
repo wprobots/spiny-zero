@@ -10,18 +10,20 @@
 get_header();
 ?>
 
-<div class="reducer">
-    <div class="spiny_grid_container">
-        <div class="spiny_grid">
-            <div class="spiny_grid__col7">
-                <h1><?php echo __( 'Categories:', 'spiny' ); ?></h1>
-                <p><?php
-                    printf( __( 'Перейти на %sглавную%s', 'spiny' ), '<a href="' . esc_url( home_url( '/' ) ) . '">', '</a>' );
-                ?></p>
+    <div class="container">
+
+        <div class="row">
+            <div class="column">
+                <h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'spiny' ); ?></h1>
+                <p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'spiny' ); ?></p>
+
+                <?php
+                get_search_form();
+                ?>
             </div>
         </div>
+
     </div>
-</div>
 
 <?php
 get_footer();

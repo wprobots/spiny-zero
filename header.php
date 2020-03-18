@@ -8,6 +8,20 @@
 <body <?php body_class(); ?>>
 <div class="layout">
     <div class="page_header">
+        <?php
+        /**
+         * Custom header image
+         */
+        $header_image = get_header_image();
+        if($header_image) {
+            ?>
+            <div class="container">
+                <img src="<?php echo $header_image; ?>" alt="<?php echo get_bloginfo('title'); ?>">
+            </div>
+            <?php
+        }
+        ?>
+
         <header>
             <div class="header_search_form" style="display: none;">
                 <div class="container">
@@ -18,42 +32,27 @@
                 <div class="row header_cols">
                     <div class="column header_col1">
                         <?php
-                        $logo_image    = get_option( 'logo_image' );
-                        $logo_image_id = get_option( 'logo_image_id' );
+                        the_custom_logo();
 
-                        $logo_text = get_option('blogdescription');
-                        ?>
-
+                        if ( is_front_page() && is_home() ) :
+                            ?>
+                            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
                         <?php
-                        if( !$logo_image || empty($logo_image) || (int)$logo_image_id < 0 ) {
+                        else :
                             ?>
-                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
-                                <img alt="" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/i/wp-robots.svg">
-                                <?php
-                                if( $logo_text && trim($logo_text) !== '' ) {
-                                    echo ' <br>' . $logo_text;
-                                }
-                                ?>
-                            </a>
-                            <?php
-                        }
-                        else {
+                            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                        <?php
+                        endif;
+                        $spiny_zero_description = get_bloginfo( 'description', 'display' );
+                        if ( $spiny_zero_description || is_customize_preview() ) :
                             ?>
-                            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo">
-                                <img alt="" src="<?php echo esc_url( $logo_image ); ?>">
-                                <?php
-                                if( $logo_text && trim($logo_text) !== '' ) {
-                                    echo ' <br>' . $logo_text;
-                                }
-                                ?>
-                            </a>
-                            <?php
-                        }
-                        ?>
+                            <p class="site-description"><?php echo $spiny_zero_description; /* WPCS: xss ok. */ ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="column header_col2">
                         <nav class="spiny_main_nav">
                             <div class="spiny_main_nav_mobile_btn"></div>
+                            <div class="spiny_main_nav_mobile_close"></div>
                             <?php
                             wp_nav_menu( array(
                                 'theme_location'  => 'header',
@@ -68,7 +67,7 @@
                     <div class="column header_col3">
                         <div class="clearfix">
                             <div class="float-right">
-                                <a href="/?s=" class="search_link"><?php echo __('Search', 'spiny'); ?></a>
+                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>?s=" class="search_link"><?php echo __('Search', 'spiny'); ?></a>
                             </div>
                         </div>
                     </div>

@@ -18,21 +18,28 @@
                     </nav>
 
                     <?php
-                    $footer_copyright = get_option('footer_copyright');
-                    if ($footer_copyright && trim($footer_copyright) !== '') {
-                        ?>
-                        <div class="copy">
-                            <?php echo $footer_copyright; ?>
-                        </div>
-                        <?php
+                    $footer_copyright = get_theme_mod('spiny_copyright');
+                    $footer_copyright_default = sprintf( esc_html__( '&copy; 2019 - %1$s. Theme: %2$s by %3$s.', 'spiny' ), date('Y'), 'Spiny Zero', '<a href="http://wp-robots.com/">WP/ROBOTS</a>' );
+
+                    $footer_copyright_default_attr = '';
+                    global $wp_customize;
+                    if ( isset( $wp_customize ) ) {
+                        $footer_copyright_default_attr = '<div class="copy_default" style="display: none;">' . ($footer_copyright_default) . '</div>';
                     }
-                    else {
-                        ?>
-                        <div class="copy">
-                            &copy; 2019 - <?php echo date('Y'); ?> <a href="https://spiny.io/">Spiny themes</a>
-                        </div>
+                    ?>
+                    <?php echo $footer_copyright_default_attr; ?>
+                    <div class="copy">
                         <?php
-                    }
+                        if ($footer_copyright && trim($footer_copyright) !== '') {
+                            echo $footer_copyright;
+                        }
+                        else {
+                            echo $footer_copyright_default;
+                        }
+                        ?>
+                    </div>
+                    <?php
+
                     ?>
                 </div>
             </div>
