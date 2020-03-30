@@ -66,8 +66,10 @@ figure {
 }
 
 header {
-    padding: 20px 0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
     position: relative;
+    border-bottom: 1px solid #bfbfbf;
 }
 header .social {
     padding-top: 2px;
@@ -83,6 +85,27 @@ header .social {
     -webkit-background-size: cover;
     background-size: cover;
 }
+header .top_menu {
+    background: #003b73;
+    color: #ffffff;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+}
+header .top_menu a {
+    color: #ffffff;
+}
+
+.spiny_top_nav ul,
+ul.spiny_top_nav {
+    list-style-type: none;
+}
+.spiny_top_nav li {
+    display: inline-block;
+    margin-right: 10px;
+    line-height: 30px;
+    vertical-align: top;
+}
 
 .logo {
 
@@ -95,6 +118,7 @@ header .social {
 .header_cols {
     align-items: center;
     justify-content: space-between;
+    margin-top: 10px;
 }
 .header_cols .header_col1 {
     width: auto;
@@ -401,6 +425,25 @@ article .fb_iframe_widget > span,
 article iframe {
     max-width: 100%;
     width: 100% !important;
+}
+.row .column.mxw860 {
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+}
+img.wp-post-image {
+    width: 100%;
+}
+.post_title {
+    font-size: 4.6rem;
+    line-height: 1.2;
+}
+
+button,
+input[type="submit"] {
+    color: #ffffff;
+    background: #003b73;
+    border-color: #003b73;
 }
 /* BASIC */
 

@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="row">
-        <div class="column">
+        <div class="column mxw860">
             <?php
             if( have_posts() ) {
                 while ( have_posts() ) :

@@ -23,7 +23,7 @@ $spiny_sidebar = get_theme_mod('spiny_sidebar');
         }
         ?>
 
-        <div class="column">
+        <div class="column mxw860">
             <?php
             if( is_archive() ) {
                 ?>
@@ -85,7 +85,7 @@ $spiny_sidebar = get_theme_mod('spiny_sidebar');
             if( is_search() ) {
                 ?>
                 <div class="row">
-                    <div class="column">
+                    <div class="column mxw860">
                         <h1><?php printf( esc_html__( 'Search Results for: %s', 'spiny' ), '<span>' . get_search_query() . '</span>' );; ?></h1>
 
                         <?php
@@ -105,7 +105,7 @@ $spiny_sidebar = get_theme_mod('spiny_sidebar');
                     $image = get_the_post_thumbnail( $post->ID, 'large' );
                     ?>
                     <div class="row">
-                        <div class="column">
+                        <div class="column mxw860">
 
                             <?php
                             if( $image ) {
@@ -141,7 +141,7 @@ $spiny_sidebar = get_theme_mod('spiny_sidebar');
             else {
                 ?>
                 <div class="row">
-                    <div class="column">
+                    <div class="column mxw860">
                         <?php esc_html_e( 'Nothing Found', 'spiny' ); ?>
                     </div>
                 </div>

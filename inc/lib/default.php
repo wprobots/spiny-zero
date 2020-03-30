@@ -42,6 +42,9 @@ if ( ! function_exists( 'spiny_setup' ) ) :
         register_nav_menus( array(
             'footer' => esc_html__( 'Footer', 'spiny' ),
         ) );
+        register_nav_menus( array(
+            'top' => esc_html__( 'Top menu', 'spiny' ),
+        ) );
 
         /*
          * Switch default core markup for search form, comment form, and comments

@@ -28,26 +28,48 @@
                     <?php get_search_form(); ?>
                 </div>
             </div>
+            <div class="top_menu">
+                <div class="container">
+                    <div class="row ">
+                        <div class="column">
+                            <?php
+                            wp_nav_menu( array(
+                                'theme_location'  => 'top',
+                                'menu'            => 'top',
+                                'container'       => false,
+                                'menu_class'      => 'spiny_top_nav',
+                                'echo'            => true,
+                            ) );
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container">
                 <div class="row header_cols">
                     <div class="column header_col1">
                         <?php
-                        the_custom_logo();
-
-                        if ( is_front_page() && is_home() ) :
-                            ?>
-                            <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-                        <?php
-                        else :
-                            ?>
-                            <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-                        <?php
-                        endif;
-                        $spiny_zero_description = get_bloginfo( 'description', 'display' );
-                        if ( $spiny_zero_description || is_customize_preview() ) :
-                            ?>
-                            <p class="site-description"><?php echo $spiny_zero_description; /* WPCS: xss ok. */ ?></p>
-                        <?php endif; ?>
+                        if( empty(get_custom_logo()) ) {
+                            if ( is_front_page() && is_home() ) :
+                                ?>
+                                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                            <?php
+                            else :
+                                ?>
+                                <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+                            <?php
+                            endif;
+                            $spiny_zero_description = get_bloginfo( 'description', 'display' );
+                            if ( $spiny_zero_description || is_customize_preview() ) :
+                                ?>
+                                <p class="site-description"><?php echo $spiny_zero_description; /* WPCS: xss ok. */ ?></p>
+                                <?php
+                            endif;
+                        }
+                        else {
+                            the_custom_logo();
+                        }
+                        ?>
                     </div>
                     <div class="column header_col2">
                         <nav class="spiny_main_nav">
