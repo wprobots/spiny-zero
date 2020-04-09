@@ -115,5 +115,3 @@ function spiny_widgets_init() {
 }
 add_action( 'widgets_init', 'spiny_widgets_init' );
 
-
-

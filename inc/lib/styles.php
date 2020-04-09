@@ -18,6 +18,13 @@ function spiny_scripts() {
         false
     );
     wp_enqueue_style(
+        'spiny-css-magnific-popup',
+        get_template_directory_uri() . '/assets/css/magnific-popup.css',
+        false,
+        filemtime(get_template_directory() . '/assets/css/magnific-popup.css'),
+        false
+    );
+    wp_enqueue_style(
         'spiny-css-style',
         get_template_directory_uri() . '/style.css',
         false,
@@ -26,6 +33,13 @@ function spiny_scripts() {
     );
 
     wp_enqueue_script( 'jquery' );
+    wp_enqueue_script(
+        'spiny-js-magnific-popup',
+        get_template_directory_uri() . '/assets/js/jquery.magnific-popup.min.js',
+        array('jquery'),
+        filemtime(get_template_directory() . '/assets/js/jquery.magnific-popup.min.js'),
+        true
+    );
     wp_enqueue_script(
         'spiny-js-fns',
         get_template_directory_uri() . '/assets/js/fns.js',

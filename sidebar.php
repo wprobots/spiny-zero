@@ -5,10 +5,10 @@ if ( ! is_active_sidebar( 'spiny-sidebar' ) ) {
 }
 ?>
 
-<div class="column column-33">
-    <aside id="secondary" class="widget-area">
+<aside class="column column-33 sidebar">
+    <div id="secondary" class="widget-area">
         <?php dynamic_sidebar( 'spiny-sidebar' ); ?>
-    </aside>
-</div>
+    </div>
+</aside>
 
 

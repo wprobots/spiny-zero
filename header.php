@@ -46,24 +46,20 @@
                 </div>
             </div>
             <div class="container">
-                <div class="row header_cols">
-                    <div class="column header_col1">
+                <div class="header_cols">
+                    <div class="header_col1">
                         <?php
-                        if( empty(get_custom_logo()) ) {
-                            if ( is_front_page() && is_home() ) :
-                                ?>
-                                <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                        $custom_logo_id = get_theme_mod( 'custom_logo' );
+
+                        if( (int)$custom_logo_id === 0 ) {
+                            ?>
+                            <div class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></div>
                             <?php
-                            else :
-                                ?>
-                                <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-                            <?php
-                            endif;
                             $spiny_zero_description = get_bloginfo( 'description', 'display' );
                             if ( $spiny_zero_description || is_customize_preview() ) :
                                 ?>
-                                <p class="site-description"><?php echo $spiny_zero_description; /* WPCS: xss ok. */ ?></p>
-                                <?php
+                                <div class="site-description"><?php echo $spiny_zero_description; ?></div>
+                            <?php
                             endif;
                         }
                         else {
@@ -71,7 +67,7 @@
                         }
                         ?>
                     </div>
-                    <div class="column header_col2">
+                    <div class="header_col2">
                         <nav class="spiny_main_nav">
                             <div class="spiny_main_nav_mobile_btn"></div>
                             <div class="spiny_main_nav_mobile_close"></div>
@@ -85,13 +81,6 @@
                             ) );
                             ?>
                         </nav>
-                    </div>
-                    <div class="column header_col3">
-                        <div class="clearfix">
-                            <div class="float-right">
-                                <a href="<?php echo esc_url( home_url( '/' ) ); ?>?s=" class="search_link"><?php echo __('Search', 'spiny'); ?></a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

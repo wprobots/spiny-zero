@@ -1,5 +1,5 @@
 <?php
-/* Template Name: Full-width page template */
+/* Template Name: No sidebar page template */
 get_header();
 
 get_template_part( 'inc/grid/page', 'nosidebar' );

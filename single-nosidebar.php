@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Full-width post template
+ * Template Name: No sidebar post template
  * Template Post Type: post
 */
 get_header();

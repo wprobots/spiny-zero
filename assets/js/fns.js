@@ -1,7 +1,28 @@
 
 jQuery(document).ready(function ($) {
-
-
+    $('.post_gallery').each(function() {
+        $(this).magnificPopup({
+            delegate: 'a',
+            type: 'image',
+            tLoading: 'Loading image #%curr%...',
+            mainClass: 'mfp-img-mobile',
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0,1]
+            },
+            image: {
+                tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+                titleSrc: function(item) {
+                    var caption = item.el.attr('title');
+                    if( caption !== '' ) {
+                        caption += '<br>';
+                    }
+                    return caption;
+                }
+            }
+        });
+    });
 });
 jQuery(document).on('touch click', '.spiny_main_nav_mobile_btn', function () {
     jQuery('nav').addClass('open');

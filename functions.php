@@ -13,9 +13,19 @@ require get_template_directory() . '/inc/lib/default.php';
 require get_template_directory() . '/inc/lib/styles.php';
 
 /**
+ * Gutenberg options
+ */
+require get_template_directory() . '/inc/lib/gutenberg.php';
+
+/**
  * Enable svg support
  */
 require get_template_directory() . '/inc/lib/svg.php';
+
+/**
+ * Transform basic gallery to magnific popup gallery
+ */
+require get_template_directory() . '/inc/lib/gallery.php';
 
 /**
  * Enable excerpt functions

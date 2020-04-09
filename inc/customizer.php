@@ -28,32 +28,6 @@ function spiny_customize_register( $wp_customize ) {
 		) );
 	}
 
-    /**
-     * Add settings:
-     * Copyright
-     */
-    $wp_customize->add_setting(
-        'spiny_copyright',
-        array(
-            'default'           => '',
-            'transport'         => $transport,
-            'sanitize_callback' => 'spiny_text_sanitizer'
-        )
-    );
-
-    /**
-     * Add controls:
-     * Copyright
-     */
-    $wp_customize->add_control(
-        'spiny_copyright',
-        array(
-            'label'    => __( 'Copyright', 'spiny' ),
-            'section'  => 'title_tagline',
-            'settings' => 'spiny_copyright'
-        )
-    );
-
 	/**
      * Add settings:
      * Header background color
@@ -78,6 +52,14 @@ function spiny_customize_register( $wp_customize ) {
     );
     $wp_customize->add_setting(
         'spiny_title_font_color',
+        array(
+            'default'           => '',
+            'transport'         => $transport,
+            'sanitize_callback' => 'spiny_color_sanitizer'
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_post_background',
         array(
             'default'           => '',
             'transport'         => $transport,
@@ -115,6 +97,23 @@ function spiny_customize_register( $wp_customize ) {
             )
         )
     );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control($wp_customize, 'spiny_post_background', array(
+                'label'    => __( 'Post background', 'spiny' ),
+                'section'  => 'colors',
+                'settings' => 'spiny_post_background'
+            )
+        )
+    );
+
+
+
+    $wp_customize->add_panel('spiny_panel_layout',array(
+        'title'=>'Layout',
+        'description'=> 'Site layout settings',
+        'priority'=> 80,
+    ));
+
 
     /**
      * Add section:
@@ -122,7 +121,7 @@ function spiny_customize_register( $wp_customize ) {
      * Right Sidebar for archive.php, index.php, search.php
      * No Sidebar for archive.php, index.php, search.php
      */
-    $wp_customize->add_section( 'spiny_section_sidebar' , array( 'title' => __( 'Sidebar', 'spiny' ), 'priority' => 81 ) );
+    $wp_customize->add_section( 'spiny_section_sidebar' , array( 'title' => __( 'Layout Settings', 'spiny' ), 'priority' => 81, 'panel' => 'spiny_panel_layout' ) );
 
     /**
      * Add settings:
@@ -137,7 +136,7 @@ function spiny_customize_register( $wp_customize ) {
     );
     /**
      * Add controls:
-     * Copyright
+     * Sidebar
      */
     $wp_customize->add_control(
         'spiny_sidebar',
@@ -153,6 +152,382 @@ function spiny_customize_register( $wp_customize ) {
             ]
         )
     );
+
+    /**
+     * Add settings:
+     * Copyright checkbox
+     */
+    $wp_customize->add_setting(
+        'spiny_copyright_checkbox',
+        array(
+            'default'   => 0,
+            'transport' => $transport,
+        )
+    );
+
+    /**
+     * Add controls:
+     * Copyright checkbox
+     */
+    $wp_customize->add_control(
+        'spiny_copyright_checkbox',
+        array(
+            'label'    => __( 'Disable footer credits', 'spiny' ),
+            'section'  => 'spiny_section_sidebar',
+            'settings' => 'spiny_copyright_checkbox',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+
+    /**
+     * Add settings:
+     * Copyright
+     */
+    $wp_customize->add_setting(
+        'spiny_copyright',
+        array(
+            'default'           => '',
+            'transport'         => $transport,
+            'sanitize_callback' => 'spiny_text_sanitizer'
+        )
+    );
+
+    /**
+     * Add controls:
+     * Copyright
+     */
+    $wp_customize->add_control(
+        'spiny_copyright',
+        array(
+            'label'    => __( 'Footer credits', 'spiny' ),
+            'section'  => 'spiny_section_sidebar',
+            'settings' => 'spiny_copyright',
+            'type'     => 'textarea',
+        )
+    );
+
+
+    /**
+     * Add section:
+     * Add section "Single post layout": Post layout settings
+     */
+    $wp_customize->add_section( 'spiny_section_post_layout' , array( 'title' => __( 'Single post layout', 'spiny' ), 'priority' => 82, 'panel' => 'spiny_panel_layout' ) );
+
+    /**
+     * Add controls:
+     * Show post comments
+     * Show post thumbnail
+     * Show post date
+     * Show post author
+     */
+    $wp_customize->add_setting(
+        'spiny_post_layout_comment',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_post_layout_thumbnail',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_post_layout_date',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_post_layout_author',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+
+    /**
+     * Add controls:
+     * Show post comments
+     * Show post thumbnail
+     * Show post date
+     * Show post author
+     */
+    $wp_customize->add_control(
+        'spiny_post_layout_comment',
+        array(
+            'label'    => __( 'Show comments', 'spiny' ),
+            'section'  => 'spiny_section_post_layout',
+            'settings' => 'spiny_post_layout_comment',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_post_layout_thumbnail',
+        array(
+            'label'    => __( 'Show thumbnail', 'spiny' ),
+            'section'  => 'spiny_section_post_layout',
+            'settings' => 'spiny_post_layout_thumbnail',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_post_layout_date',
+        array(
+            'label'    => __( 'Show date', 'spiny' ),
+            'section'  => 'spiny_section_post_layout',
+            'settings' => 'spiny_post_layout_date',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_post_layout_author',
+        array(
+            'label'    => __( 'Show author', 'spiny' ),
+            'section'  => 'spiny_section_post_layout',
+            'settings' => 'spiny_post_layout_author',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+
+
+    /**
+     * Add section:
+     * Add section "Single page layout": Page layout settings
+     */
+    $wp_customize->add_section( 'spiny_section_page_layout' , array( 'title' => __( 'Single page layout', 'spiny' ), 'priority' => 83, 'panel' => 'spiny_panel_layout' ) );
+
+    /**
+     * Add controls:
+     * Show page comments
+     * Show page thumbnail
+     * Show page date
+     * Show page author
+     */
+    $wp_customize->add_setting(
+        'spiny_page_layout_comment',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_page_layout_thumbnail',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_page_layout_date',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_page_layout_author',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+
+    /**
+     * Add controls:
+     * Show page comments
+     * Show page thumbnail
+     * Show page date
+     * Show page author
+     */
+    $wp_customize->add_control(
+        'spiny_page_layout_comment',
+        array(
+            'label'    => __( 'Show comments', 'spiny' ),
+            'section'  => 'spiny_section_page_layout',
+            'settings' => 'spiny_page_layout_comment',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_page_layout_thumbnail',
+        array(
+            'label'    => __( 'Show thumbnail', 'spiny' ),
+            'section'  => 'spiny_section_page_layout',
+            'settings' => 'spiny_page_layout_thumbnail',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_page_layout_date',
+        array(
+            'label'    => __( 'Show date', 'spiny' ),
+            'section'  => 'spiny_section_page_layout',
+            'settings' => 'spiny_page_layout_date',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_page_layout_author',
+        array(
+            'label'    => __( 'Show author', 'spiny' ),
+            'section'  => 'spiny_section_page_layout',
+            'settings' => 'spiny_page_layout_author',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+
+
+
+    /**
+     * Add section:
+     * Add section "Posts archive layout": Posts archive loop layout settings
+     */
+    $wp_customize->add_section( 'spiny_section_archive_layout' , array( 'title' => __( 'Posts archive layout', 'spiny' ), 'priority' => 84, 'panel' => 'spiny_panel_layout' ) );
+
+    /**
+     * Add controls:
+     * Show archive posts thumbnail
+     * Show archive posts date
+     * Show archive posts author
+     * Show archive posts category
+     * Show archive posts tag
+     */
+    $wp_customize->add_setting(
+        'spiny_archive_layout_thumbnail',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_archive_layout_date',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_archive_layout_author',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_archive_layout_category',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_archive_layout_tag',
+        array(
+            'default'   => 1,
+            'transport' => $transport,
+        )
+    );
+
+    /**
+     * Add controls:
+     * Show archive posts thumbnail
+     * Show archive posts date
+     * Show archive posts author
+     * Show archive posts category
+     * Show archive posts tag
+     */
+    $wp_customize->add_control(
+        'spiny_archive_layout_thumbnail',
+        array(
+            'label'    => __( 'Show thumbnail', 'spiny' ),
+            'section'  => 'spiny_section_archive_layout',
+            'settings' => 'spiny_archive_layout_thumbnail',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_archive_layout_date',
+        array(
+            'label'    => __( 'Show date', 'spiny' ),
+            'section'  => 'spiny_section_archive_layout',
+            'settings' => 'spiny_archive_layout_date',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_archive_layout_author',
+        array(
+            'label'    => __( 'Show author', 'spiny' ),
+            'section'  => 'spiny_section_archive_layout',
+            'settings' => 'spiny_archive_layout_author',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_archive_layout_category',
+        array(
+            'label'    => __( 'Show categories', 'spiny' ),
+            'section'  => 'spiny_section_archive_layout',
+            'settings' => 'spiny_archive_layout_category',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_archive_layout_tag',
+        array(
+            'label'    => __( 'Show tags', 'spiny' ),
+            'section'  => 'spiny_section_archive_layout',
+            'settings' => 'spiny_archive_layout_tag',
+            'type'     => 'checkbox',
+            'input_attrs'  => [
+                'value' => 1
+            ]
+        )
+    );
+
 }
 add_action( 'customize_register', 'spiny_customize_register' );
 
@@ -233,6 +608,7 @@ function spiny_customizer_css() {
     $spiny_header_bg_color  = get_theme_mod('spiny_header_bg_color');
     $spiny_font_color       = get_theme_mod('spiny_font_color');
     $spiny_title_font_color = get_theme_mod('spiny_title_font_color');
+    $spiny_post_background  = get_theme_mod('spiny_post_background');
     ?>
     <style type="text/css" class="spiny_header_bg_color">
         <?php
@@ -293,6 +669,17 @@ function spiny_customizer_css() {
             <?php
         }
         ?>
+    </style>
+    <style type="text/css" class="spiny_post_background">
+        <?php
+        if( $spiny_post_background && !empty($spiny_post_background) ) {
+            ?>
+        .post_container {
+            background: <?php echo $spiny_post_background; ?>
+        }
+        <?php
+    }
+    ?>
     </style>
     <?php
 }
