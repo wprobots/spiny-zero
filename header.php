@@ -2,7 +2,16 @@
 <html>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=cyrillic-ext" rel="stylesheet">
+
+    <?php
+    $spiny_fonts = get_theme_mod('spiny_fonts');
+    if( $spiny_fonts && (int)$spiny_fonts >= 0 ) {
+        ?>
+        <link href="https://fonts.googleapis.com/css2?family=<?php echo $spiny_fonts; ?>:wght@400;700&display=swap" rel="stylesheet">
+        <?php
+    }
+    ?>
+
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

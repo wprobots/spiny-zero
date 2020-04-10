@@ -13,6 +13,33 @@
 function spiny_customize_register( $wp_customize ) {
     $transport = 'postMessage';
 
+    /**
+     * Cusomize google fonts
+     */
+    $wp_customize->add_section( 'spiny_section_fonts' , array( 'title' => __('Fonts', 'spiny'), 'priority' => 70 ) );
+    $wp_customize->add_setting(
+        'spiny_fonts',
+        array(
+            'default'   => 'Roboto',
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_fonts',
+        array(
+            'label'    => __('Select site font', 'spiny'),
+            'section'  => 'spiny_section_fonts',
+            'settings' => 'spiny_fonts',
+            'type'     => 'select',
+            'choices'  => [
+                'Roboto' => 'Roboto',
+                'Open+Sans' => 'Open Sans',
+                'Montserrat' => 'Montserrat',
+                '-1' => 'No google fonts',
+            ]
+        )
+    );
+
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -108,7 +135,7 @@ function spiny_customize_register( $wp_customize ) {
 
 
 
-    $wp_customize->add_panel('spiny_panel_layout',array(
+    $wp_customize->add_panel('spiny_panel_layout', array(
         'title'=>'Layout',
         'description'=> 'Site layout settings',
         'priority'=> 80,
@@ -595,16 +622,45 @@ function spiny_customizer_css() {
 //    }
 
     /**
+     * Fonts
+     */
+    $spiny_fonts = get_theme_mod('spiny_fonts');
+    ?>
+    <style type="text/css" class="spiny_fonts">
+        <?php
+        if( $spiny_fonts && (int)$spiny_fonts >= 0 ) {
+            $spiny_fonts = str_replace('+', ' ', $spiny_fonts);
+            ?>
+            html,
+            body,
+            input,
+            button
+            textarea {
+                font-family: '<?php echo $spiny_fonts; ?>', sans-serif;
+            }
+            <?php
+        }
+        else {
+            ?>
+            html,
+            body,
+            input,
+            button
+            textarea {
+                font-family: sans-serif;
+            }
+            <?php
+        }
+        ?>
+    </style>
+    <?php
+
+    /**
      * Controls:
      * Header background color
      * Site font color
      * Titles font color
      */
-
-    // spiny_header_bg_color
-    // spiny_font_color
-    // spiny_title_font_color
-
     $spiny_header_bg_color  = get_theme_mod('spiny_header_bg_color');
     $spiny_font_color       = get_theme_mod('spiny_font_color');
     $spiny_title_font_color = get_theme_mod('spiny_title_font_color');
