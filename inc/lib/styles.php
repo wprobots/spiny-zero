@@ -48,7 +48,7 @@ function spiny_scripts() {
         true
     );
 }
-add_action( 'wp_enqueue_scripts', 'spiny_scripts' );
+add_action( 'wp_enqueue_scripts', 'spiny_scripts', 10 );
 
 
 /**
@@ -57,4 +57,4 @@ add_action( 'wp_enqueue_scripts', 'spiny_scripts' );
 function spiny_viewport_meta_tag() {
     echo '<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1" />';
 }
-add_action( 'wp_head', 'spiny_viewport_meta_tag' );
+add_action( 'wp_head', 'spiny_viewport_meta_tag', 10 );
