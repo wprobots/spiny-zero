@@ -60,7 +60,7 @@ if ( ! function_exists( 'spiny_setup' ) ) :
 
         // Set up the WordPress core custom background feature.
         add_theme_support( 'custom-background', apply_filters( 'spiny_custom_background_args', array(
-            'default-color' => 'ffffff',
+            'default-color' => 'eeeeee',
             'default-image' => '',
         ) ) );
 
