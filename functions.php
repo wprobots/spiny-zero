@@ -5,58 +5,58 @@
  * Content width
  * Register sidebar
  */
-require get_template_directory() . '/inc/lib/default.php';
+require_once get_template_directory() . '/inc/lib/default.php';
 
 /**
  * Enqueue styles && scripts
  */
-require get_template_directory() . '/inc/lib/styles.php';
+require_once get_template_directory() . '/inc/lib/styles.php';
 
 /**
  * Gutenberg options
  */
-require get_template_directory() . '/inc/lib/gutenberg.php';
+require_once get_template_directory() . '/inc/lib/gutenberg.php';
 
 /**
  * Enable svg support
  */
-require get_template_directory() . '/inc/lib/svg.php';
+require_once get_template_directory() . '/inc/lib/svg.php';
 
 /**
  * Transform basic gallery to magnific popup gallery
  */
-require get_template_directory() . '/inc/lib/gallery.php';
+require_once get_template_directory() . '/inc/lib/gallery.php';
 
 /**
  * Enable excerpt functions
  */
-require get_template_directory() . '/inc/lib/excerpt.php';
+require_once get_template_directory() . '/inc/lib/excerpt.php';
 
 /**
  * Implement the Custom Header feature.
  */
-require get_template_directory() . '/inc/custom-header.php';
+require_once get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+require_once get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+require_once get_template_directory() . '/inc/template-functions.php';
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+require_once get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
-    require get_template_directory() . '/inc/jetpack.php';
+    require_once get_template_directory() . '/inc/jetpack.php';
 }
 
 

@@ -556,7 +556,7 @@ function spiny_customize_register( $wp_customize ) {
     );
 
 }
-add_action( 'customize_register', 'spiny_customize_register' );
+add_action( 'customize_register', 'spiny_customize_register', 10 );
 
 /**
  * Render the site title for the selective refresh partial.
@@ -739,4 +739,4 @@ function spiny_customizer_css() {
     </style>
     <?php
 }
-add_action( 'wp_head', 'spiny_customizer_css');
+add_action( 'wp_head', 'spiny_customizer_css' );
