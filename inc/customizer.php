@@ -253,28 +253,28 @@ function spiny_customize_register( $wp_customize ) {
     $wp_customize->add_setting(
         'spiny_post_layout_comment',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_post_layout_thumbnail',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_post_layout_date',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_post_layout_author',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
@@ -293,9 +293,6 @@ function spiny_customize_register( $wp_customize ) {
             'section'  => 'spiny_section_post_layout',
             'settings' => 'spiny_post_layout_comment',
             'type'     => 'checkbox',
-            'input_attrs'  => [
-                'value' => 1
-            ]
         )
     );
     $wp_customize->add_control(
@@ -305,9 +302,6 @@ function spiny_customize_register( $wp_customize ) {
             'section'  => 'spiny_section_post_layout',
             'settings' => 'spiny_post_layout_thumbnail',
             'type'     => 'checkbox',
-            'input_attrs'  => [
-                'value' => 1
-            ]
         )
     );
     $wp_customize->add_control(
@@ -317,9 +311,6 @@ function spiny_customize_register( $wp_customize ) {
             'section'  => 'spiny_section_post_layout',
             'settings' => 'spiny_post_layout_date',
             'type'     => 'checkbox',
-            'input_attrs'  => [
-                'value' => 1
-            ]
         )
     );
     $wp_customize->add_control(
@@ -329,9 +320,6 @@ function spiny_customize_register( $wp_customize ) {
             'section'  => 'spiny_section_post_layout',
             'settings' => 'spiny_post_layout_author',
             'type'     => 'checkbox',
-            'input_attrs'  => [
-                'value' => 1
-            ]
         )
     );
 
@@ -352,28 +340,28 @@ function spiny_customize_register( $wp_customize ) {
     $wp_customize->add_setting(
         'spiny_page_layout_comment',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_page_layout_thumbnail',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_page_layout_date',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_page_layout_author',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
@@ -453,35 +441,35 @@ function spiny_customize_register( $wp_customize ) {
     $wp_customize->add_setting(
         'spiny_archive_layout_thumbnail',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_archive_layout_date',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_archive_layout_author',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_archive_layout_category',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
     $wp_customize->add_setting(
         'spiny_archive_layout_tag',
         array(
-            'default'   => 1,
+            'default'   => 0,
             'transport' => $transport,
         )
     );
