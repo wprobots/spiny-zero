@@ -7,7 +7,7 @@
                 while ( have_posts() ) :
                     the_post();
 
-                    get_template_part( 'inc/grid/single', get_post_type() );
+                    get_template_part( 'inc/grid/single','' );
                 endwhile; // End of the loop.
             }
             else {
