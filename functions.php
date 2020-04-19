@@ -59,5 +59,10 @@ if ( defined( 'JETPACK__VERSION' ) ) {
     require_once get_template_directory() . '/inc/jetpack.php';
 }
 
-
+/**
+ * Include default hooks
+ */
+require_once get_template_directory() . '/inc/hooks/loop-hooks.php';
+require_once get_template_directory() . '/inc/hooks/page-hooks.php';
+require_once get_template_directory() . '/inc/hooks/post-hooks.php';
 

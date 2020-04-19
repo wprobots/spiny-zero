@@ -3,7 +3,7 @@ global $wp_customize;
 
 $spiny_sidebar = get_theme_mod('spiny_sidebar');
 ?>
-<div class="container">
+<div class="container<?php echo ( (int)$spiny_sidebar === 1 || (int)$spiny_sidebar === 2 ) ? ' spiny-sidebar' : ''; ?>">
 
     <div class="row">
         <?php

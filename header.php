@@ -13,6 +13,13 @@
     ?>
 
     <?php wp_head(); ?>
+
+    <?php
+    $spiny_scripts = get_theme_mod('spiny_scripts');
+    if( $spiny_scripts && ! empty($spiny_scripts) ) {
+        echo $spiny_scripts;
+    }
+    ?>
 </head>
 <body <?php body_class(); ?>>
 <div class="layout">
@@ -99,5 +106,5 @@
         <section>
             <?php
             if( ! is_front_page() ) {
-                // TODO. Breadcrumbs
+                do_action('spiny_breadcrumbs');
             }

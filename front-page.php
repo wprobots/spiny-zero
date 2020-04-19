@@ -11,12 +11,10 @@ if( 'page' == get_option('show_on_front') ) {
                 <div class="row">
                     <div class="column">
                         <article class="page">
-                            <div class="post_container">
-                                <div class="post_content">
-                                    <?php
-                                    the_content();
-                                    ?>
-                                </div>
+                            <div class="post_content">
+                                <?php
+                                the_content();
+                                ?>
                             </div>
                         </article>
                     </div>

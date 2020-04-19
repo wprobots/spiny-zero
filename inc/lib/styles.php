@@ -58,3 +58,14 @@ function spiny_viewport_meta_tag() {
     echo '<meta name="viewport" content="user-scalable=0, width=device-width, initial-scale=1" />';
 }
 add_action( 'wp_head', 'spiny_viewport_meta_tag', 10 );
+
+add_action( 'admin_enqueue_scripts', 'spiny_admin_assets' );
+function spiny_admin_assets() {
+    wp_enqueue_style(
+        'spiny-css-admin',
+        get_template_directory_uri() . '/assets/css/admin.css',
+        false,
+        filemtime(get_template_directory() . '/assets/css/admin.css'),
+        false
+    );
+}

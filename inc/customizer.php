@@ -14,6 +14,28 @@ function spiny_customize_register( $wp_customize ) {
     $transport = 'postMessage';
 
     /**
+     * Add custom scripts field
+     */
+    $wp_customize->add_section( 'spiny_section_scripts' , array( 'title' => __('Scripts', 'spiny'), 'priority' => 1000 ) );
+    $wp_customize->add_setting(
+        'spiny_scripts',
+        array(
+            'default'   => '',
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_scripts',
+        array(
+            'label'    => __('Insert scripts code', 'spiny'),
+            'section'  => 'spiny_section_scripts',
+            'settings' => 'spiny_scripts',
+            'type'     => 'textarea'
+        )
+    );
+
+
+    /**
      * Cusomize google fonts
      */
     $wp_customize->add_section( 'spiny_section_fonts' , array( 'title' => __('Fonts', 'spiny'), 'priority' => 70 ) );
