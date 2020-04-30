@@ -62,6 +62,7 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 /**
  * Include default hooks
  */
+require_once get_template_directory() . '/inc/hooks/header-hooks.php';
 require_once get_template_directory() . '/inc/hooks/loop-hooks.php';
 require_once get_template_directory() . '/inc/hooks/page-hooks.php';
 require_once get_template_directory() . '/inc/hooks/post-hooks.php';

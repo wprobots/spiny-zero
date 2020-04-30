@@ -39,28 +39,10 @@
         ?>
 
         <header>
-            <div class="header_search_form" style="display: none;">
-                <div class="container">
-                    <?php get_search_form(); ?>
-                </div>
-            </div>
-            <div class="top_menu">
-                <div class="container">
-                    <div class="row ">
-                        <div class="column">
-                            <?php
-                            wp_nav_menu( array(
-                                'theme_location'  => 'top',
-                                'menu'            => 'top',
-                                'container'       => false,
-                                'menu_class'      => 'spiny_top_nav',
-                                'echo'            => true,
-                            ) );
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+            do_action('spiny_header_searchform');
+            do_action('spiny_header_additional_header');
+            ?>
             <div class="container">
                 <div class="header_cols">
                     <div class="header_col1">
