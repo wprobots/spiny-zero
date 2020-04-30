@@ -64,13 +64,14 @@ function spiny_post_meta($post) {
 
 
 /**
- * Post meta hook
+ * Post content hook
  */
 add_filter('spiny_post_content', 'spiny_post_content', 10, 1);
 function spiny_post_content($post) {
     $content = get_the_content($post->ID);
     $content = apply_filters( 'the_content', $content );
     $content = str_replace( ']]>', ']]&gt;', $content );
+
     echo $content;
 }
 
