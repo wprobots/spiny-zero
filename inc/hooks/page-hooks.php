@@ -37,28 +37,31 @@ add_filter('spiny_page_meta', 'spiny_page_meta', 10, 1);
 function spiny_page_meta($post) {
     $spiny_page_layout_date   = get_theme_mod('spiny_page_layout_date');
     $spiny_page_layout_author = get_theme_mod('spiny_page_layout_author');
-    ?>
-    <div class="post_meta">
-        <?php
-        if( $spiny_page_layout_author ) {
-            $author_id = $post->post_author;
-            ?>
-            <div class="post_author">
-                <a href="<?php echo get_author_posts_url($author_id); ?>" itemprop="author"><?php echo get_the_author($author_id); ?></a>
-            </div>
-            <?php
-        }
+
+    if( $spiny_page_layout_author || $spiny_page_layout_date ) {
         ?>
-        <?php
-        if( $spiny_page_layout_date ) {
-            $date = get_the_date( 'd.m.Y', $post );
-            ?>
-            <div class="post_date" itemprop="datePublished"><?php echo $date; ?></div>
+        <div class="post_meta">
             <?php
-        }
-        ?>
-    </div>
-    <?php
+            if( $spiny_page_layout_author ) {
+                $author_id = $post->post_author;
+                ?>
+                <div class="post_author">
+                    <a href="<?php echo get_author_posts_url($author_id); ?>" itemprop="author"><?php echo get_the_author($author_id); ?></a>
+                </div>
+                <?php
+            }
+            ?>
+            <?php
+            if( $spiny_page_layout_date ) {
+                $date = get_the_date( 'd.m.Y', $post );
+                ?>
+                <div class="post_date" itemprop="datePublished"><?php echo $date; ?></div>
+                <?php
+            }
+            ?>
+        </div>
+        <?php
+    }
 }
 
 
