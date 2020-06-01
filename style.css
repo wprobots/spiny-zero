@@ -593,13 +593,13 @@ pre {
     margin-right: 15px;
 }
 .post_author {
-    background: url('assets/i/author.svg') 0 50% no-repeat;
+    background: url('assets/i/post-author.svg') 0 50% no-repeat;
     -webkit-background-size: auto 80%;
     background-size: auto 80%;
     padding-left: 20px;
 }
 .post_date {
-    background: url('assets/i/time.svg') 0 50% no-repeat;
+    background: url('assets/i/post-time.svg') 0 50% no-repeat;
     -webkit-background-size: auto 80%;
     background-size: auto 80%;
     padding-left: 20px;
