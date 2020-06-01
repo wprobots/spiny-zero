@@ -40,7 +40,6 @@
 
         <header>
             <?php
-            do_action('spiny_header_searchform');
             do_action('spiny_header_additional_header');
             ?>
             <div class="container">

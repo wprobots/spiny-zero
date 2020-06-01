@@ -97,6 +97,7 @@ header {
     position: relative;
     border-bottom: 1px solid #bfbfbf;
     background: #ffffff;
+    overflow: auto;
 }
 header .social {
     padding-top: 2px;

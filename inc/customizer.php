@@ -79,10 +79,28 @@ function spiny_customize_register( $wp_customize ) {
 
 	/**
      * Add settings:
+     * Top Header background color
+     * Top Header font color
      * Header background color
      * Site font color
      * Titles font color
      */
+    $wp_customize->add_setting(
+        'spiny_top_header_bg_color',
+        array(
+            'default'           => '#003b73',
+            'transport'         => $transport,
+            'sanitize_callback' => 'spiny_color_sanitizer'
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_top_header_font_color',
+        array(
+            'default'           => '#ffffff',
+            'transport'         => $transport,
+            'sanitize_callback' => 'spiny_color_sanitizer'
+        )
+    );
     $wp_customize->add_setting(
         'spiny_header_bg_color',
         array(
@@ -118,10 +136,28 @@ function spiny_customize_register( $wp_customize ) {
 
     /**
      * Add controls:
+     * Top Header background color
+     * Top Header font color
      * Header background color
      * Site font color
      * Titles font color
      */
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control($wp_customize, 'spiny_top_header_bg_color', array(
+                'label'    => __( 'Top Header background color', 'spiny' ),
+                'section'  => 'colors',
+                'settings' => 'spiny_top_header_bg_color'
+            )
+        )
+    );
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control($wp_customize, 'spiny_top_header_font_color', array(
+                'label'    => __( 'Top Header font color', 'spiny' ),
+                'section'  => 'colors',
+                'settings' => 'spiny_top_header_font_color'
+            )
+        )
+    );
     $wp_customize->add_control(
         new WP_Customize_Color_Control($wp_customize, 'spiny_header_bg_color', array(
                 'label'    => __( 'Header background color', 'spiny' ),
@@ -671,82 +707,112 @@ function spiny_customizer_css() {
      * Site font color
      * Titles font color
      */
-    $spiny_header_bg_color  = get_theme_mod('spiny_header_bg_color');
-    $spiny_font_color       = get_theme_mod('spiny_font_color');
-    $spiny_title_font_color = get_theme_mod('spiny_title_font_color');
-    $spiny_post_background  = get_theme_mod('spiny_post_background');
+    $spiny_top_header_bg_color   = get_theme_mod('spiny_top_header_bg_color');
+    $spiny_top_header_font_color = get_theme_mod('spiny_top_header_font_color');
+    $spiny_header_bg_color       = get_theme_mod('spiny_header_bg_color');
+    $spiny_font_color            = get_theme_mod('spiny_font_color');
+    $spiny_title_font_color      = get_theme_mod('spiny_title_font_color');
+    $spiny_post_background       = get_theme_mod('spiny_post_background');
     ?>
-    <style type="text/css" class="spiny_header_bg_color">
-        <?php
-        if( $spiny_header_bg_color && !empty($spiny_header_bg_color) ) {
-            ?>
-            .page_header header {
-                background: <?php echo $spiny_header_bg_color; ?>
-            }
-            <?php
-        }
+
+    <?php
+    if( $spiny_top_header_bg_color && !empty($spiny_top_header_bg_color) ) {
         ?>
-    </style>
-    <style type="text/css" class="spiny_font_color">
-        <?php
-        if( $spiny_font_color && !empty($spiny_font_color) ) {
-            ?>
-            .page_container,
-            .page_container a,
-            .page_footer,
-            .page_footer a {
-                color: <?php echo $spiny_font_color; ?>
-            }
-            <?php
+        <style type="text/css" class="spiny_top_header_bg_color">
+        header .top_menu {
+            background: <?php echo $spiny_top_header_bg_color; ?>
         }
-        ?>
-    </style>
-    <style type="text/css" class="spiny_title_font_color">
-        <?php
-        if( $spiny_title_font_color && !empty($spiny_title_font_color) ) {
-            ?>
-            .page_container h1,
-            .page_container h2,
-            .page_container h3,
-            .page_container h4,
-            .page_container h5,
-            .page_container h6,
-            .page_container h1 a,
-            .page_container h2 a,
-            .page_container h3 a,
-            .page_container h4 a,
-            .page_container h5 a,
-            .page_container h6 a,
-            .post_title a,
-            .page_footer h1,
-            .page_footer h2,
-            .page_footer h3,
-            .page_footer h4,
-            .page_footer h5,
-            .page_footer h6,
-            .page_footer h1 a,
-            .page_footer h2 a,
-            .page_footer h3 a,
-            .page_footer h4 a,
-            .page_footer h5 a,
-            .page_footer h6 a {
-                color: <?php echo $spiny_title_font_color; ?>
-            }
-            <?php
-        }
-        ?>
-    </style>
-    <style type="text/css" class="spiny_post_background">
-        <?php
-        if( $spiny_post_background && !empty($spiny_post_background) ) {
-            ?>
-        .post_container {
-            background: <?php echo $spiny_post_background; ?>
-        }
+        </style>
         <?php
     }
     ?>
-    </style>
+
+    <?php
+    if( $spiny_top_header_font_color && !empty($spiny_top_header_font_color) ) {
+        ?>
+        <style type="text/css" class="spiny_top_header_font_color">
+        header .top_menu, header .top_menu a {
+            color: <?php echo $spiny_top_header_font_color; ?>
+        }
+        </style>
+        <?php
+    }
+    ?>
+
+    <?php
+    if( $spiny_header_bg_color && !empty($spiny_header_bg_color) ) {
+        ?>
+        <style type="text/css" class="spiny_header_bg_color">
+        .page_header header {
+            background: <?php echo $spiny_header_bg_color; ?>
+        }
+        </style>
+        <?php
+    }
+    ?>
+
+    <?php
+    if( $spiny_font_color && !empty($spiny_font_color) ) {
+        ?>
+        <style type="text/css" class="spiny_font_color">
+        .page_container,
+        .page_container a,
+        .page_footer,
+        .page_footer a {
+            color: <?php echo $spiny_font_color; ?>
+        }
+        </style>
+        <?php
+    }
+    ?>
+
+    <?php
+    if( $spiny_title_font_color && !empty($spiny_title_font_color) ) {
+        ?>
+        <style type="text/css" class="spiny_title_font_color">
+        .page_container h1,
+        .page_container h2,
+        .page_container h3,
+        .page_container h4,
+        .page_container h5,
+        .page_container h6,
+        .page_container h1 a,
+        .page_container h2 a,
+        .page_container h3 a,
+        .page_container h4 a,
+        .page_container h5 a,
+        .page_container h6 a,
+        .post_title a,
+        .page_footer h1,
+        .page_footer h2,
+        .page_footer h3,
+        .page_footer h4,
+        .page_footer h5,
+        .page_footer h6,
+        .page_footer h1 a,
+        .page_footer h2 a,
+        .page_footer h3 a,
+        .page_footer h4 a,
+        .page_footer h5 a,
+        .page_footer h6 a {
+            color: <?php echo $spiny_title_font_color; ?>
+        }
+        </style>
+        <?php
+    }
+    ?>
+
+    <?php
+    if( $spiny_post_background && !empty($spiny_post_background) ) {
+        ?>
+        <style type="text/css" class="spiny_post_background">
+        .post_container {
+            background: <?php echo $spiny_post_background; ?>
+        }
+        </style>
+        <?php
+    }
+    ?>
     <?php
 }
 add_action( 'wp_head', 'spiny_customizer_css' );

@@ -1,4 +1,51 @@
 <?php
+
+/*
+$string = file_get_contents(__DIR__ . "/posts.json");
+$json_a = json_decode($string, true);
+
+$i = 0;
+foreach($json_a as $msg) {
+    remove_filter('content_save_pre', 'wp_filter_post_kses');
+    remove_filter('content_filtered_save_pre', 'wp_filter_post_kses');
+
+    $post_data = array(
+        'post_title'    => $msg['title'],
+        'post_content'  => $msg['msg'],
+        'post_date'     =>  date('Y-m-d H:i:s', $msg['date']),
+        'post_status'   => 'publish',
+        'post_author'   => 2,
+    );
+    $post_id = wp_insert_post( $post_data );
+
+    add_filter('content_save_pre', 'wp_filter_post_kses');
+    add_filter('content_filtered_save_pre', 'wp_filter_post_kses');
+    usleep( 250000 );
+    print $i . ') ' . date('Y-m-d H:i:s', $msg['date']) . ' ' . $msg['title'] . '<br>';
+    $i++;
+}
+//    print_r('<pre>');
+//    print_r($json_a);
+
+//    $posts = get_posts( array(
+//        'numberposts' => -1,
+//        'category'    => 0,
+//        'orderby'     => 'date',
+//        'order'       => 'DESC',
+//        'include'     => array(),
+//        'exclude'     => array(),
+//        'meta_key'    => '',
+//        'meta_value'  =>'',
+//        'post_type'   => 'post',
+//        'suppress_filters' => true, // подавление работы фильтров изменения SQL запроса
+//    ) );
+//    foreach($posts as $post) {
+//        wp_delete_post( $post->ID, true );
+//    }
+
+exit();
+*/
+
 /**
  * Default WP settings:
  * Theme setup

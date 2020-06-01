@@ -19,6 +19,25 @@ jQuery(function( $ ) {
         });
     });
 
+    wp.customize( 'spiny_top_header_bg_color', function( value ) {
+        value.bind( function( newVal ) {
+            if( ! newVal ) {
+                newVal = '';
+                $( '.spiny_top_header_bg_color' ).remove();
+            }
+            $( 'header .top_menu' ).css( {background: newVal} );
+        });
+    });
+    wp.customize( 'spiny_top_header_font_color', function( value ) {
+        value.bind( function( newVal ) {
+            if( ! newVal ) {
+                newVal = '';
+                $( '.spiny_top_header_font_bg_color' ).remove();
+            }
+            $( 'header .top_menu, header .top_menu a' ).css( {color: newVal} );
+        });
+    });
+
     wp.customize( 'spiny_font_color', function( value ) {
         value.bind( function( newVal ) {
             if( ! newVal ) {
