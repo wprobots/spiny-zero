@@ -4,11 +4,21 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
 
     <?php
-    $spiny_fonts = get_theme_mod('spiny_fonts');
-    if( $spiny_fonts && (int)$spiny_fonts >= 0 ) {
-        ?>
-        <link href="https://fonts.googleapis.com/css2?family=<?php echo $spiny_fonts; ?>:wght@400;700&display=swap" rel="stylesheet">
-        <?php
+    /**
+     * Include google fonts from customizer
+     * Priority for custom user font include
+     */
+    $spiny_fonts_custom = get_theme_mod('spiny_fonts_custom');
+    if( ! empty ($spiny_fonts_custom) ) {
+        echo $spiny_fonts_custom;
+    }
+    else {
+        $spiny_fonts = get_theme_mod('spiny_fonts');
+        if( $spiny_fonts && (int)$spiny_fonts >= 0 ) {
+            ?>
+            <link href="https://fonts.googleapis.com/css2?family=<?php echo $spiny_fonts; ?>:wght@400;700&display=swap" rel="stylesheet">
+            <?php
+        }
     }
     ?>
 

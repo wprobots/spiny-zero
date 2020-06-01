@@ -33,6 +33,13 @@ body {
     min-height: 100%;
     background: #eeeeee;
 }
+html,
+body,
+input,
+button,
+textarea {
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
 a,
 a:visited,

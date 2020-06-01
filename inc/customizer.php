@@ -37,12 +37,20 @@ function spiny_customize_register( $wp_customize ) {
 
     /**
      * Cusomize google fonts
+     * Field for custom google font
      */
     $wp_customize->add_section( 'spiny_section_fonts' , array( 'title' => __('Fonts', 'spiny'), 'priority' => 70 ) );
     $wp_customize->add_setting(
         'spiny_fonts',
         array(
             'default'   => 'Roboto',
+            'transport' => $transport,
+        )
+    );
+    $wp_customize->add_setting(
+        'spiny_fonts_custom',
+        array(
+            'default'   => '',
             'transport' => $transport,
         )
     );
@@ -59,6 +67,16 @@ function spiny_customize_register( $wp_customize ) {
                 'Montserrat' => 'Montserrat',
                 '-1' => 'No google fonts',
             ]
+        )
+    );
+    $wp_customize->add_control(
+        'spiny_fonts_custom',
+        array(
+            'label'    => __( 'Custom Google Fonts include', 'spiny' ),
+            'description'    => __( 'Example: <br>&lt;link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap" rel="stylesheet"&gt;', 'spiny' ),
+            'section'  => 'spiny_section_fonts',
+            'settings' => 'spiny_fonts_custom',
+            'type'     => 'textarea',
         )
     );
 
@@ -670,35 +688,41 @@ function spiny_customizer_css() {
     /**
      * Fonts
      */
-    $spiny_fonts = get_theme_mod('spiny_fonts');
+    $spiny_fonts        = get_theme_mod('spiny_fonts');
+    $spiny_fonts_custom = get_theme_mod('spiny_fonts_custom');
     ?>
-    <style type="text/css" class="spiny_fonts">
-        <?php
+
+    <?php
+    if( empty($spiny_fonts_custom) ) {
         if( $spiny_fonts && (int)$spiny_fonts >= 0 ) {
             $spiny_fonts = str_replace('+', ' ', $spiny_fonts);
             ?>
-            html,
-            body,
-            input,
-            button
-            textarea {
-                font-family: '<?php echo $spiny_fonts; ?>', sans-serif;
-            }
+            <style type="text/css" class="spiny_fonts">
+                html,
+                body,
+                input,
+                button,
+                textarea {
+                    font-family: '<?php echo $spiny_fonts; ?>', sans-serif;
+                }
+            </style>
             <?php
         }
         else {
             ?>
-            html,
-            body,
-            input,
-            button
-            textarea {
-                font-family: sans-serif;
-            }
+            <style type="text/css" class="spiny_fonts">
+                html,
+                body,
+                input,
+                button,
+                textarea {
+                    font-family: sans-serif;
+                }
+            </style>
             <?php
         }
-        ?>
-    </style>
+    }
+    ?>
     <?php
 
     /**
