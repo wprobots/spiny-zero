@@ -133,6 +133,10 @@ header .top_menu a {
 .site-title {
     font-size: 20px;
     line-height: 24px;
+    text-decoration: none;
+}
+.site-title a {
+    text-decoration: none;
 }
 .site-description {
     font-size: 14px;
@@ -484,7 +488,91 @@ pre {
 
 
 /* TYPOGRAFY */
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+h6:last-child {
+    margin-bottom: 30px;
+}
+.widget-area h1,
+.widget-area h2,
+.widget-area h3,
+.widget-area h4,
+.widget-area h5,
+.widget-area h6 {
+    margin-bottom: 0;
+}
+h1 {
+    font-size: 36px;
+}
+h2 {
+    font-size: 32px;
+}
+h3 {
+    font-size: 28px;
+}
+h4 {
+    font-size: 20px;
+    font-weight: 500;
+}
+h5 {
+    font-size: 19px;
+}
+h6 {
+    font-size: 18px;
+}
 
+table {
+    border-collapse: collapse;
+    clear: both;
+    margin: 1.75em 0;
+    table-layout: fixed;
+    width: 100%;
+}
+td,
+th,
+caption {
+    border-style: solid;
+    border-width: 1px;
+    padding: 5px;
+}
+/* Lists */
+li > ul,
+li > ol {
+    margin: 0;
+}
+ul,
+ol {
+    padding: 0 0 0 20px;
+}
+hr {
+    border: none;
+    clear: both;
+    height: 1px;
+    width: 100%;
+}
+blockquote {
+    font-size: 16px;
+    margin: 1.5em 0;
+    padding: 1em;
+    background: #fffaf0;
+    sborder: none;
+}
+blockquote blockquote {
+    font-style: italic;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    margin: 0;
+}
+blockquote p:first-child {
+    margin-top: 0;
+}
+blockquote p:last-child {
+    margin-bottom: 0;
+}
 /* TYPOGRAFY */
 
 
@@ -499,6 +587,9 @@ pre {
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #999999;
 }
 .post_meta div {
     margin-right: 15px;
@@ -541,6 +632,9 @@ img.wp-post-image {
 .post_title {
     font-size: 2.6rem;
     line-height: 1.2;
+}
+.post_title a {
+    text-decoration: none;
 }
 
 .comment-list,
@@ -622,7 +716,12 @@ img.wp-post-image {
     max-height: 50px;
     width: auto;
 }
-/* BASIC */
+
+.post_comments {
+    margin-top: 1.5rem;
+    border-top: 1px solid #999999;
+    padding-top: 1.5rem;
+}
 
 .searchform {
     display: flex;
@@ -680,7 +779,13 @@ img.wp-post-image {
     cursor: pointer;
     outline: none;
 }
+/* BASIC */
 
+@media screen and (max-width: 860px) {
+    .row .sidebar {
+        padding-top: 30px;
+    }
+}
 @media screen and (max-width: 600px) {
     .page_container .row article.column {
         margin-bottom: 20px;

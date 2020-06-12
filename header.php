@@ -25,6 +25,14 @@
     <?php wp_head(); ?>
 
     <?php
+    if( function_exists('is_amp_endpoint') && is_amp_endpoint() ) {
+        ?>
+        <script async custom-element="amp-mega-menu" src="https://cdn.ampproject.org/v0/amp-mega-menu-0.1.js"></script>
+        <?php
+    }
+    ?>
+
+    <?php
     $spiny_scripts = get_theme_mod('spiny_scripts');
     if( $spiny_scripts && ! empty($spiny_scripts) ) {
         echo $spiny_scripts;
