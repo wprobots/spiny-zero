@@ -104,7 +104,8 @@ header {
     position: relative;
     border-bottom: 1px solid #bfbfbf;
     background: #ffffff;
-    overflow: auto;
+    display: inline-block;
+    width: 100%;
 }
 header .social {
     padding-top: 2px;
