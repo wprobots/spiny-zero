@@ -80,7 +80,7 @@ figure {
     margin-right: 0;
 }
 ul {
-    list-style: disc inside;
+    list-style: disc outside;
 }
 
 hr {
